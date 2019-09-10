@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import PropTypes from 'prop-types';
 class Search extends Component {
     state = {
         terms:''
@@ -13,6 +13,11 @@ class Search extends Component {
         this.props.getrecipes(this.state.terms);
         this.setState({terms:''});
         }
+    }
+
+    static propTypes ={
+        setAlert:PropTypes.func.isRequired,
+        getrecipes:PropTypes.func.isRequired
     }
     render(){
         return (

@@ -18,7 +18,7 @@ const Recipes = ({loading, recipe}) => {
     );
             }
 }
-Recipes.PropTypes = {
+Recipes.propTypes = {
     loading:PropTypes.bool,
     recipe:PropTypes.array.isRequired
 }

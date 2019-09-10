@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const Items = ({item}) => {
     return (
         <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
@@ -19,5 +19,7 @@ const Items = ({item}) => {
                     </div>
     )
 }
-
+Items.propTypes = {
+    item:PropTypes.object.isRequired
+}
 export default Items;

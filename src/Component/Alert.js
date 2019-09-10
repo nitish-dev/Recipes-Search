@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const Alert = ({alert}) => {
     return (
         alert !== null &&(
@@ -9,5 +9,7 @@ const Alert = ({alert}) => {
         )
     )
 }
-
+Alert.propTypes ={
+    alert:PropTypes.bool.isRequired
+}
 export default Alert;
