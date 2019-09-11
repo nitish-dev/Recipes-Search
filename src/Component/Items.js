@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 const Items = ({item}) => {
     return (
@@ -12,7 +13,7 @@ const Items = ({item}) => {
                              </h6>
                         </div>
                         <div className="card-footer">
-                            <button type="button" className="btn btn-primary text-capitalize">details</button>
+                            <Link to={`/view/${item.recipe_id}`} className="btn btn-primary text-capitalize">details</Link>
                             <a href={item.source_url} className="btn btn-success mx-2" target="_blank" rel="noopener noreferrer">Recipe url</a>
                         </div>
                     </div>

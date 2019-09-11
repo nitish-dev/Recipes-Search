@@ -10,6 +10,6 @@ const Alert = ({alert}) => {
     )
 }
 Alert.propTypes ={
-    alert:PropTypes.bool.isRequired
+    alert:PropTypes.bool
 }
 export default Alert;
