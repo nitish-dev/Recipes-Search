@@ -1,14 +1,23 @@
 import React, {Component} from 'react';
 import Spinner from './Spinner';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+
 class RecipesDetail extends Component {
-  componentDidMount(){
-      this.props.getdetails(this.props.match.params.id);
+    state ={
+        details:{},
+        loading:false
+    }
+ async componentDidMount(){
+      //this.props.getdetails();
+        this.setState({loading:true});
+        const res = await axios.get(`https://www.food2fork.com/api/get?key=ea91ea1d0b21f780621a679a772766f3&rId=${this.props.match.params.id}`)
+        this.setState({details:res.data.recipe, loading:false});
   }
    
     render(){
-       const {image_url,publisher,publisher_url,ingredients,title,source_url} = this.props.detail;
-        if(this.props.loading){
+       const {image_url,publisher,publisher_url,ingredients,title,source_url} = this.state.details;
+        if(this.state.loading){
             return <Spinner />
         }else{
             if(ingredients!== undefined){
@@ -28,8 +37,8 @@ class RecipesDetail extends Component {
                     <a href={source_url} className="btn btn-primary mt-2 ml-3" rel="noopener noreferrer">Recipe URL</a>
                     <ul className="list-group mt-4">
                         <h2 className="mt-3 mb-4">Ingredients</h2>
-                        { ingredients.map(data =>{
-                            return (<li>{data}</li>)
+                        { ingredients.map((data, index) =>{
+                            return (<li key={index}>{data}</li>)
                         })}
                     </ul>
                        

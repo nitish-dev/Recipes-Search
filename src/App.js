@@ -14,8 +14,7 @@ class App extends Component{
   state = {
     loading:false,
     alert:null,
-    recipes:[],
-    details:{}
+    recipes:[]
   }
 
   //Search recipes
@@ -27,12 +26,6 @@ getRecipes = async terms => {
  
 }
 
-//Get recipes detail
-getRecipesDetails = async id => {
-  this.setState({loading:true});
-        const res = await axios.get(`https://www.food2fork.com/api/get?key=ea91ea1d0b21f780621a679a772766f3&rId=${id}`)
-        this.setState({details:res.data.recipe, loading:false});
-}
     //setAlert
     setAlert = (msg) => {
       this.setState({alert:msg});
@@ -40,7 +33,7 @@ getRecipesDetails = async id => {
     }
  
   render(){
-    const {loading,recipes,details,alert} = this.state;
+    const {loading,recipes,alert} = this.state;
     return (
      
         <Router>
@@ -53,9 +46,7 @@ getRecipesDetails = async id => {
                <Recipes recipe={recipes} loading={loading} />
                </Fragment>
             )} />
-            <Route exact path="/view/:id" render={props => (
-              <RecipesDetail {...props} getdetails={this.getRecipesDetails} detail={details} loading={loading} />
-            )} />
+            <Route exact path="/view/:id" component={RecipesDetail} />
      
       </Switch>
       </Router>
